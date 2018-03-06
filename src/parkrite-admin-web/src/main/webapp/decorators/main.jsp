@@ -103,7 +103,7 @@
 
 
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li class="dropdown"><a href="#" class="dropdown-toggle active"
 						data-toggle="dropdown">Orders</a>
 						<ul class="dropdown-menu">
 							<li><s:a cssClass="nav-link" namespace="/order"
