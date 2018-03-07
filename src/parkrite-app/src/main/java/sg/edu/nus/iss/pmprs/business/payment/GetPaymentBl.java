@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsPaymentRepository;
 import sg.edu.nus.iss.pmprs.entity.BookCarPark;
 
@@ -18,7 +18,7 @@ public class GetPaymentBl extends BusinessLogic {
 	@Autowired 
 	PmprsPaymentRepository paymentRepository;
 	@Autowired 
-	CarParkRepository carparkRepository;
+	StockRepository carparkRepository;
 	
 	@Override
 	protected void execute(CommonVo vo) {

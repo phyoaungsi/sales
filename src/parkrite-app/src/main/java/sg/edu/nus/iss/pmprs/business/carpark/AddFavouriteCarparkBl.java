@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsFavouriteRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsFavoriteCarPark;
@@ -20,7 +20,7 @@ public class AddFavouriteCarparkBl extends BusinessLogic<Boolean> {
 	@Autowired
 	PmprsFavouriteRepository favouriteRepository;
 	@Autowired 
-	CarParkRepository carparkRepository;
+	StockRepository carparkRepository;
 	
 @Override
 protected void execute(CommonVo vo) {

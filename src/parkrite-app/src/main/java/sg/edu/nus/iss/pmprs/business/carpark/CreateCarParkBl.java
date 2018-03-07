@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.core.webservice.google.GeoCode;
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsCarParkOwnerRespository;
 import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsParkingSlotRepository;

@@ -13,7 +13,7 @@ import org.springframework.web.util.WebUtils;
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.BookingRepository;
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
 import sg.edu.nus.iss.pmprs.entity.BookCarPark;

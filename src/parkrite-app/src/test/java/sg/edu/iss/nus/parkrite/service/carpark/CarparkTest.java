@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.CarPark;
 import sg.edu.nus.iss.pmprs.service.MobileClientService;
@@ -20,7 +20,7 @@ import sg.edu.nus.iss.pmprs.service.MobileClientService;
 @ContextConfiguration(locations = { "/META-INF/applicationContext.xml" })
 public class CarparkTest {
 	
-@Autowired CarParkRepository repository;
+@Autowired StockRepository repository;
 	
 	
 	 @Test

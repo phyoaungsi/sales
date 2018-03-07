@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.BookingRepository;
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
 import sg.edu.nus.iss.pmprs.entity.BookCarPark;
 import sg.edu.nus.iss.pmprs.entity.Order;
@@ -24,7 +24,7 @@ public class GetBookingsByCarParkBl extends BusinessLogic<List<BookingVo>> {
 	@Autowired 
 	PmprsBookingRepository bookingRepository;
 	@Autowired 
-	CarParkRepository carparkRepository;
+	StockRepository carparkRepository;
 	@Override
 	protected void execute(CommonVo vo1) {
 		// TODO Auto-generated method stub
