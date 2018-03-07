@@ -105,7 +105,7 @@ $( "#saveChange" ).click(function() {
 
 <s:form action="createOrder">
 
- <s:select label="Buyer"
+ <s:select cssClass="form-control" label="Buyer"
 		
 		list="selectUsers" 
 		name="model.selectedUser" />

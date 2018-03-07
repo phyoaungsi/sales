@@ -8,7 +8,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsMember;
 import sg.edu.nus.iss.pmprs.entity.Product;
@@ -43,7 +43,7 @@ ScopedModelDriven<OrderForm> {
 	}
 
 	@Autowired 
-	CarParkRepository carparkRepository;
+	StockRepository carparkRepository;
 	
 	@Autowired 
 	PmprsMemberRepository memberRepository;;
