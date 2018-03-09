@@ -1,6 +1,8 @@
 package sg.edu.nus.iss.pmprs.web.actions.order;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
 import sg.edu.nus.iss.pmprs.web.ajax.CommonAjaxResponse;
@@ -19,19 +21,24 @@ public class EditStockAction extends CommonAction  implements ModelDriven<Common
 	private CommonAjaxResponse response;
 	public String addStock()
 	{
-		List <SelectedStock> list =(List <SelectedStock> )this.retrieveSession( SessionKeys.STOCK_LIST);
+		Map<String,Object> session=this.getSession();
+		if(session==null)
+		{
+			session=new HashMap<String,Object>();
+		}
+		List <SelectedStock> list =(List <SelectedStock> )session.get( SessionKeys.STOCK_LIST.name());
 	   
 		if(data==null) return SUCCESS;
 		if(list!=null && list.size()>0)
 		{
 			list.addAll(data);
-			this.saveSession(SessionKeys.STOCK_LIST, list);
+			session.put(SessionKeys.STOCK_LIST.name(), list);
 		}
 		else
 		{
-			this.saveSession(SessionKeys.STOCK_LIST, data);
+			session.put(SessionKeys.STOCK_LIST.name(), data);
 		}
-		
+	    setSession(session);
 		this.response=new CommonAjaxResponse();
 		response.setStatus("NO_STATUS");
 		return SUCCESS;

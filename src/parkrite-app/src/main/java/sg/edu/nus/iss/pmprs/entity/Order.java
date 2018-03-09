@@ -23,6 +23,7 @@ import sg.edu.nus.iss.pmprs.entity.PmprsBoookingFees;
 import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.entity.PmprsMemberVehicle;
 import sg.edu.nus.iss.pmprs.entity.PmprsUserstatus;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
 /**
@@ -45,7 +46,7 @@ public class Order extends CommonEntity   implements Serializable
 
 	@Enumerated(EnumType.STRING)
     @Column(name="payment_status")
-	private PaymentType paymentStatus;
+	private PaymentStatus paymentStatus;
 	
     @Column(name="total")
 	private double total;
@@ -97,18 +98,17 @@ public class Order extends CommonEntity   implements Serializable
 	}
 
 
-
-
-
-
-
-
-
-
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
+	public void setOrderStatus(OrderStatus status) {
+		this.orderStatus=status;
 	}
+
+
+
+
+
+
+
+
 
 
 
@@ -292,7 +292,7 @@ public void setMember(PmprsMember member) {
 
 
 
-public PaymentType getPaymentStatus() {
+public PaymentStatus getPaymentStatus() {
 	return paymentStatus;
 }
 
@@ -306,7 +306,7 @@ public PaymentType getPaymentStatus() {
 
 
 
-public void setPaymentStatus(PaymentType paymentStatus) {
+public void setPaymentStatus(PaymentStatus paymentStatus) {
 	this.paymentStatus = paymentStatus;
 }
 

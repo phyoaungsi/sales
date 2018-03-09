@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 import javax.persistence.EntityManager;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +22,7 @@ import sg.edu.nus.iss.pmprs.core.web.CommonActionSupport;
 import sg.edu.nus.iss.pmprs.dao.PmprsRoleRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsRole;
 
-public class CommonAction extends CommonActionSupport {
+public class CommonAction extends CommonActionSupport implements SessionAware{
 
 	/**
 	 * 

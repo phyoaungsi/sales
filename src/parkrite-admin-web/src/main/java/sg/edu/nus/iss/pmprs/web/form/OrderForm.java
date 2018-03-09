@@ -49,10 +49,10 @@ public class OrderForm extends CommonForm {
 	public void setPaymentStatusList(Map<String, String> paymentStatusList) {
 		this.paymentStatusList = paymentStatusList;
 	}
-	public String getSelectedUser() {
+	public int getSelectedUser() {
 		return selectedUser;
 	}
-	public void setSelectedUser(String selectedUser) {
+	public void setSelectedUser(int selectedUser) {
 		this.selectedUser = selectedUser;
 	}
 	public String getAddress() {
@@ -105,7 +105,7 @@ public class OrderForm extends CommonForm {
 	}
 	private Map<String,String> paymentTypeList;
 	private Map<String,String> paymentStatusList;
-	private String selectedUser;
+	private int selectedUser;
 	private String address;
 	private String invRef;
 	private String paymentMode;

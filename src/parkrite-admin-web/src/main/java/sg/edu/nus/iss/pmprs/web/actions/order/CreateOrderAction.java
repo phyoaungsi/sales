@@ -9,11 +9,15 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
+import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.entity.Order;
 import sg.edu.nus.iss.pmprs.entity.OrderStock;
+import sg.edu.nus.iss.pmprs.entity.PmprsMember;
 import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
 import sg.edu.nus.iss.pmprs.web.ajax.order.SelectedStock;
 import sg.edu.nus.iss.pmprs.web.common.SessionKeys;
@@ -46,25 +50,28 @@ public class CreateOrderAction  extends CommonAction implements ScopedModelDrive
    @Autowired
 	PmprsBookingRepository orderRepo;
    
+   @Autowired
+  	PmprsMemberRepository memberRepo;
     @Autowired
 	StockRepository stockRepo;
 	public String execute() {
 		
-		List <SelectedStock> list =(List <SelectedStock> )this.retrieveSession( SessionKeys.STOCK_LIST);
+		List <SelectedStock> list =(List <SelectedStock> )getSession().get( SessionKeys.STOCK_LIST.name());
 		
 		Order order=new Order();
-		order.setDeliveryDate(getDate(model.getDeliverDate()));
+		order.setDeliveryDate(ConvertUtils.getDate(model.getDeliverDate()));
 		order.setDiscount(ConvertUtils.getAmount(model.getDiscount()).doubleValue());
-		order.setId(newVal);
-		order.setInvRef(newVal);
+		//order.setId(model.get);
+		PmprsMember member=memberRepo.getOne(model.getSelectedUser());
+		order.setInvRef("");
 		order.setMember(member);
-		order.setOrderStatus(OrderStatus.NEW);
+		order.setOrderStatus(OrderStatus.valueOf(model.getOrderStatus()));
 		order.setOrderSubmitDatetime(new Date());
-		order.setPaymentDate(paymentDate);
-		order.setPaymentStatus(paymentStatus);
-		order.setPaymentType(paymentType);
-		order.setTotal(total);
-		o
+		order.setPaymentDate(null);
+		order.setPaymentStatus(PaymentStatus.NEW);
+		order.setPaymentType(PaymentType.valueOf(model.getPaymentType()));
+		order.setTotal(ConvertUtils.getAmount(model.getTotal()).doubleValue());
+		
 		List<OrderStock> items=new ArrayList<>();
 		for(SelectedStock s:list){
 			OrderStock os=new OrderStock();
@@ -76,9 +83,8 @@ public class CreateOrderAction  extends CommonAction implements ScopedModelDrive
 		order.setItems(items);
 		orderRepo.save(order);
 		
-		this.addActionMessage("So Error Found");
-		this.addActionError("No Error Found");
-		this.addActionError("yES Error Found");
+		this.addActionMessage(getText("create.order.success"));
+	
 	return SUCCESS;
 	}
 
