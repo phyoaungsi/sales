@@ -49,7 +49,7 @@ import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
  * avoids creating unnecessary local properties. Pick your poison.</p>
  */
 public class CommonActionSupport extends ActionSupport
-        implements SessionAware, ApplicationAware {
+        implements ApplicationAware {
 
     /**
      * Return CANCEL so apropriate result can be selected.
@@ -101,18 +101,14 @@ public class CommonActionSupport extends ActionSupport
      *
      * @param value A Map representing session state
      */
-    public void setSession(Map value) {
-        session = value;
-    }
+   
 
     /**
      * <p>Provide session context.</p>
      *
      * @return session context
      */
-    public Map getSession() {
-        return session;
-    }
+  
 
     // ---- Task property (utilized by UI) ----
 

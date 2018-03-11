@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
 import sg.edu.nus.iss.pmprs.web.ajax.CommonAjaxResponse;
 import sg.edu.nus.iss.pmprs.web.ajax.order.SelectedStock;
 import sg.edu.nus.iss.pmprs.web.common.SessionKeys;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class EditStockAction extends CommonAction  implements ModelDriven<CommonAjaxResponse> {
@@ -21,7 +24,8 @@ public class EditStockAction extends CommonAction  implements ModelDriven<Common
 	private CommonAjaxResponse response;
 	public String addStock()
 	{
-		Map<String,Object> session=this.getSession();
+		
+		session = ActionContext.getContext().getSession();
 		if(session==null)
 		{
 			session=new HashMap<String,Object>();
@@ -57,4 +61,10 @@ public class EditStockAction extends CommonAction  implements ModelDriven<Common
 		// TODO Auto-generated method stub
 		return response;
 	}
+	Map<String, Object> session;
+
+	
+	
+	
+	
 }

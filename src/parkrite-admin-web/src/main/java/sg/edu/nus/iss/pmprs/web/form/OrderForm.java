@@ -15,6 +15,7 @@ public class OrderForm extends CommonForm {
 	 */
 	private static final long serialVersionUID = -8336666023116275825L;
 	private Map<String,String> selectUsers;
+	private String jsonString;
 	private Map<String,String> orderStatusList;
 	private List<Product> stocks;
 	private List <SelectedStock> selectedStock;
@@ -117,7 +118,7 @@ public class OrderForm extends CommonForm {
 	private String total;
 	private String remarks;
 	private String buyer;
-	private String discount;
+	private double discount;
 	private String deliverDate;
 	private String paymentStatus;
 	@Override
@@ -160,10 +161,10 @@ public class OrderForm extends CommonForm {
 	public void setBuyer(String buyer) {
 		this.buyer = buyer;
 	}
-	public String getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
-	public void setDiscount(String discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
 	public String getDeliverDate() {
@@ -177,6 +178,12 @@ public class OrderForm extends CommonForm {
 	}
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+	public String getJsonString() {
+		return jsonString;
+	}
+	public void setJsonString(String jsonString) {
+		this.jsonString = jsonString;
 	}
 	
 	

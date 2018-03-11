@@ -16,13 +16,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import sg.edu.nus.iss.pmprs.core.common.PropertiesFile;
 import sg.edu.nus.iss.pmprs.core.dao.HibernateEmUtility;
 import sg.edu.nus.iss.pmprs.core.web.CommonActionSupport;
 import sg.edu.nus.iss.pmprs.dao.PmprsRoleRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsRole;
 
-public class CommonAction extends CommonActionSupport implements SessionAware{
+public abstract class CommonAction extends CommonActionSupport{
 
 	/**
 	 * 
@@ -111,11 +113,11 @@ public class CommonAction extends CommonActionSupport implements SessionAware{
 	}
 	
 
-	public void saveSession(Object key,Object value){
-	   Map<Object,Object> m=	this.getSession();
+	public void saveSession(String key,Object value){
+	   Map<String,Object> m=	this.getSession();
 	   if(m==null)
 	   {
-		 m=new HashMap<Object,Object>();
+		 m=new HashMap<String,Object>();
 		 m.put(key, value);
 		 this.setSession(m);
 	   }else{
@@ -124,9 +126,21 @@ public class CommonAction extends CommonActionSupport implements SessionAware{
 	}
 	
 	public Object retrieveSession(Object key){
-		   Map<Object,Object> m=	this.getSession();
+		   Map<String,Object> m=	this.getSession();
 		   if(m!=null)
 		    return m.get(key);
 		   return null;
+	}
+	
+	public void setSession(Map<String, Object> session) {
+		// TODO Auto-generated method stub
+		ActionContext.getContext().setSession(session);
+		
+	}
+	
+	public Map<String, Object> getSession() {
+		// TODO Auto-generated method stub
+		return ActionContext.getContext().getSession();
+		
 	}
 }

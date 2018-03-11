@@ -11,11 +11,8 @@
 <script>
 
 $( document ).ready(function() {
+	var tableData=<s:property  escapeHtml="false" value="jsonString"   /> ;
 	
-	var tableData = [
-    {id:1, name:"Billy Bob", qty:"12", price:"12", total:144},
-    {id:2, name:"Mary May", qty:"1", price:"10", total:10},
-]
     console.log( "ready!" );
 	$('#selectedProduct').tabulator({
     height:"311px",
@@ -117,11 +114,11 @@ $( "#saveChange" ).click(function() {
    <s:textfield name="model.total"  label ="Grand Total"/>
    <s:textfield name="model.discount"  label ="discount"/>
     <s:textfield name="model.deliverDate"  label ="Date of Delivery"/>
- 
+    
      <s:textfield name="model.orderStatus"  label ="Order Status"/>
      <s:textfield name="model.paymentStatus"  label ="Payment Status"/>
       <s:textfield name="model.paymentType"  label ="Payment Type"/>
-       <s:textfield name="model.discount"  label ="Discount"/>
+    
     <s:textfield name="model.remarks"  label ="Remarks"/>
 <tr><td >
 </td></tr>
@@ -133,7 +130,7 @@ $( "#saveChange" ).click(function() {
     <h3 class="panel-title">Panel title</h3>
   </div>
   <div class="panel-body">
-<div style="background-color: #2e3338;" id="selectedProduct"> </div>
+<div id="selectedProduct"> </div>
 <table  class="table" id="productSelection">
 <tr>
 <th>

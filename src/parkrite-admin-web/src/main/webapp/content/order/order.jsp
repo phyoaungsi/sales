@@ -118,11 +118,29 @@ $( "#saveChange" ).click(function() {
    <s:textfield name="model.total"  label ="Grand Total"/>
    <s:textfield name="model.discount"  label ="discount"/>
     <s:textfield name="model.deliverDate"  label ="Date of Delivery"/>
+ <tr>
+    <td>
+    <s:property value='Date of Delivery'/>
+    </td><td>
  
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+           
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    
+</td></tr>
      <s:textfield name="model.orderStatus"  label ="Order Status"/>
      <s:textfield name="model.paymentStatus"  label ="Payment Status"/>
       <s:textfield name="model.paymentType"  label ="Payment Type"/>
-       <s:textfield name="model.discount"  label ="Discount"/>
+       
     <s:textfield name="model.remarks"  label ="Remarks"/>
 <tr><td >
 </td></tr>
