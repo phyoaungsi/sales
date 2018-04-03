@@ -52,6 +52,7 @@
                 class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="database" value="MYSQL" />
                 <property name="showSql" value="true" />
+               
             </bean>
         </property>
     </bean>
@@ -70,7 +71,7 @@
    <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/parkrite" />
+        <property name="url" value="jdbc:mysql://localhost:3306/parkrite_test" />
         <property name="username" value="root" />
         <property name="password" value="computer" />
     </bean>

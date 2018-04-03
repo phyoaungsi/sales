@@ -48,7 +48,7 @@ public class NewPaymentBl extends BusinessLogic<sg.edu.nus.iss.pmprs.mobile.book
 	   PmprsPayment payment=new PmprsPayment();
 	   booking= bookingDao.findByInvRef(bvo.getRequest().getBookingRefId());
 	   
-	   payment.setOrder(booking);
+	  // payment.setOrder(booking);
 	   payment.setPaymentAmount(bvo.getRequest().getBookingFee());
 	   payment.setPaymentDate(new Date());
 	   payment.setPaymentRefNumber(bvo.getRequest().getPaymentRefId());

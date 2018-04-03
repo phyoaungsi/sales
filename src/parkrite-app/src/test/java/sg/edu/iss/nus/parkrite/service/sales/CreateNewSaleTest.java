@@ -45,6 +45,7 @@ public class CreateNewSaleTest {
 			}
 	
 		Order order=new Order();
+		order.setId(2);
 		order.setCreatedTime(new Date());
 		order.setDeliveryDate(new Date());
 		order.setDiscount(6.00);

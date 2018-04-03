@@ -23,9 +23,9 @@ public class PmprsPayment extends CommonEntity   implements Serializable {
 	private static final long serialVersionUID = -4941555979371161956L;
 	@Column(name="payment_ref")
 	private String paymentRefNumber;
-	@ManyToOne
-	@JoinColumn(name="booking_id")
-	private Order order;
+	//@ManyToOne
+	//@JoinColumn(name="booking_id")
+	//private Order order;
 	
 	@Column(name="payment_amount")
 	private float paymentAmount;
@@ -35,12 +35,12 @@ public class PmprsPayment extends CommonEntity   implements Serializable {
 	private Date paymentDate;
 	@Column(name="payment_method")
 	private PaymentMethod paymentMethod;
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order booking) {
-		this.order = booking;
-	}
+//	public Order getOrder() {
+//		return order;
+//	}
+//	public void setOrder(Order booking) {
+//		this.order = booking;
+//	}
 	public float getPaymentAmount() {
 		return paymentAmount;
 	}

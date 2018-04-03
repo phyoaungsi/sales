@@ -31,7 +31,7 @@ import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
  * @author phyo
 */
 @Entity
-@Table(name = "order" )
+@Table(name = "orders" )
 public class Order extends CommonEntity   implements Serializable
 {
 	private static final long serialVersionUID = 471618974520667480L;	
