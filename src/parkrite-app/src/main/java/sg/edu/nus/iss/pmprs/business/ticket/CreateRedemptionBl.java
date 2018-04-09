@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.PmprsRedemptionRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 
 import sg.edu.nus.iss.pmprs.entity.PmprsRedemption;
 
@@ -21,7 +21,7 @@ public class CreateRedemptionBl extends BusinessLogic<Boolean> {
 	private RedemptionVo redeemVo;
 	
 	@Autowired 
-	PmprsCarParkRepository carparkRespository;
+	ProductRepository carparkRespository;
 	
 	@Override
 	protected void execute(CommonVo vo) {

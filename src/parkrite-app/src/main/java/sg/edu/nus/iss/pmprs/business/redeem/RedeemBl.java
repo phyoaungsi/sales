@@ -10,7 +10,7 @@ import sg.edu.nus.iss.pmprs.business.inbox.InboxMessageBl;
 import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.exceptions.BusinessException;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsComplimentaryRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.dao.RedeemHistoryRepository;
@@ -40,7 +40,7 @@ public class RedeemBl extends BusinessLogic<Boolean> {
 	RedemptionRepository redeemDao;
 	
 	@Autowired
-	PmprsCarParkRepository carparkDao;
+	ProductRepository carparkDao;
 
 	@Override
 	protected void execute(CommonVo vo) {

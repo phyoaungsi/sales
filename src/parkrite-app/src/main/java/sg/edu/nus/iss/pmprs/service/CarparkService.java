@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sg.edu.nus.iss.pmprs.business.carpark.CreateCarParkBl;
 import sg.edu.nus.iss.pmprs.business.carpark.ModifyCarParkBl;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsFavouriteRepository;
 import sg.edu.nus.iss.pmprs.entity.Order;
 import sg.edu.nus.iss.pmprs.entity.OrderStock;
@@ -35,7 +35,7 @@ public class CarparkService {
 	CreateCarParkBl createCarparkBl;
 	
 	@Autowired 
-	PmprsCarParkRepository cRespository;
+	ProductRepository cRespository;
 	
 	@Autowired 
 	PmprsBookingRepository bookingRepository;

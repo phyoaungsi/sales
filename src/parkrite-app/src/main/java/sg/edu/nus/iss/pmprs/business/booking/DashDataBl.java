@@ -15,7 +15,7 @@ import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.BookingRepository;
 import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.entity.BookCarPark;
 import sg.edu.nus.iss.pmprs.entity.CarPark;
 import sg.edu.nus.iss.pmprs.entity.Order;
@@ -30,7 +30,7 @@ public class DashDataBl extends BusinessLogic<List<DashBoardVo>> {
 	@Autowired
 	PmprsBookingRepository bookingRepository;
 	@Autowired
-	PmprsCarParkRepository carparkRepository;
+	ProductRepository carparkRepository;
 
 	@Override
 	protected void execute(CommonVo commonVo) {

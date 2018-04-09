@@ -17,7 +17,7 @@ import sg.edu.nus.iss.pmprs.business.member.MemberRegistrationBl;
 import sg.edu.nus.iss.pmprs.business.member.UpdateMemberBl;
 import sg.edu.nus.iss.pmprs.business.mobiledashboard.GetDashboardInfoBl;
 //import sg.edu.nus.iss.pmprs.dao.CarParkRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.entity.PmprsInboxMessage;
@@ -204,7 +204,7 @@ public class MobileClientServiceImpl extends Service implements
 	}
 
 	@Autowired
-	PmprsCarParkRepository carparkRepository;
+	ProductRepository carparkRepository;
 
 	public boolean addFavouriteCarpark(String loginUser, FavouriteCarparkAddRequest request) {
 

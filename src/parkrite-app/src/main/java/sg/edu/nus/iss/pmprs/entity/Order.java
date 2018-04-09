@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import sg.edu.nus.iss.pmprs.core.dao.CommonEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -72,13 +73,10 @@ public class Order extends CommonEntity   implements Serializable
     @Column(name="invoice_ref_number")
 	private String invRef;
     
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
+	@OneToMany(orphanRemoval=true,cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY, mappedBy = "order")
 	private List<OrderStock> items;
 	
-    /**
-     * Prefered methods to create a PmprsBooking is via the createPmprsBooking method in PmprsBookingManager or
-     * via the factory class PmprsBookingFactory create method
-     */
+
     public Order()
     {
     }

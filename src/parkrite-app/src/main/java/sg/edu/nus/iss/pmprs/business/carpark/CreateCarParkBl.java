@@ -16,7 +16,7 @@ import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.core.webservice.google.GeoCode;
 import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsCarParkOwnerRespository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsParkingSlotRepository;
 import sg.edu.nus.iss.pmprs.entity.CarPark;
 import sg.edu.nus.iss.pmprs.entity.PmprsBoookingFees;
@@ -31,7 +31,7 @@ import sg.edu.nus.iss.pmprs.vo.product.ProductVo;
 public class CreateCarParkBl extends BusinessLogic<ProductVo> {
 
 	@Autowired 
-	PmprsCarParkRepository carparkRepository;
+	ProductRepository carparkRepository;
 	
 	@Autowired 
 	PmprsCarParkOwnerRespository ownerRepository;

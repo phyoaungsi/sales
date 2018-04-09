@@ -11,7 +11,7 @@ import sg.edu.nus.iss.pmprs.core.business.BusinessLogic;
 import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingFeesRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsVehicleRepository;
 import sg.edu.nus.iss.pmprs.entity.Order;
@@ -28,7 +28,7 @@ public class NewBokingBl extends BusinessLogic<BookingResponse> {
 
 	private static final Object CONFIRM = null;
 	@Autowired PmprsBookingRepository bookingRepository;
-	@Autowired PmprsCarParkRepository carparkRepository;
+	@Autowired ProductRepository carparkRepository;
 	@Autowired PmprsVehicleRepository memberVehicleRepository;
 	@Autowired PmprsBookingFeesRepository bookingFeesRepository;
 	@Autowired PmprsMemberRepository memberRepository;

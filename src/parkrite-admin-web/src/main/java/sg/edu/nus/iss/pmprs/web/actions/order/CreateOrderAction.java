@@ -85,7 +85,7 @@ public class CreateOrderAction  extends CommonAction implements ScopedModelDrive
 			
 		}
 		order.setItems(items);
-		//orderRepo.save(order);
+		orderRepo.save(order);
 		gson=new Gson();
 		this.addActionMessage(getText("create.order.success"));
 	    this.getModel().setJsonString(gson.toJson(list));

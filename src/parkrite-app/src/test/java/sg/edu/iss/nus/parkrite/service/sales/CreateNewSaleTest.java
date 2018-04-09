@@ -1,6 +1,9 @@
 package sg.edu.iss.nus.parkrite.service.sales;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.entity.Order;
+import sg.edu.nus.iss.pmprs.entity.OrderStock;
 import sg.edu.nus.iss.pmprs.entity.PmprsMember;
+import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
@@ -31,28 +37,37 @@ public class CreateNewSaleTest {
 	 
 	 @Autowired
 	 PmprsMemberRepository memberRepo;
+	 
+	 @Autowired
+	 ProductRepository productRepo;
+	 
 	 @Test
 	 public void createData()
 	 {
 		 
 		 
 	
-		     try {
-				Class.forName("com.mysql.jdbc.Driver" );
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		   
 	
 		Order order=new Order();
-		order.setId(2);
+		//order.setId(2);
 		order.setCreatedTime(new Date());
 		order.setDeliveryDate(new Date());
 		order.setDiscount(6.00);
 		order.setInvRef("INV0001");
 		PmprsMember m=memberRepo.getOne(1);
 		order.setMember(m);
-		//order.setItems(items);
+		OrderStock os=new OrderStock();
+		Product product=productRepo.findOne(1);
+		
+		os.setProduct(product);
+		os.setQuantity(2);
+		os.setSalePrice(new BigDecimal(30));
+		
+		List<OrderStock> items=new ArrayList<>();
+		os.setOrder(order);
+		items.add(os);
+		order.setItems(items);
 		order.setOrderStatus(OrderStatus.NEW);
 		order.setOrderSubmitDatetime(new Date());
 		order.setPaymentDate(new Date());

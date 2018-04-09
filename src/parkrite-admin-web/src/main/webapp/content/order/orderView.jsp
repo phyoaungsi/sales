@@ -109,7 +109,7 @@ $( "#saveChange" ).click(function() {
    <s:textfield  name="model.invRef" label="Invoice No" />
   
    <s:textfield name="model.buyer" label="Name" />
-   <s:textfield name="model.description"  label ="Product Description"/>
+
    <s:textfield name="model.address"  label ="address"/> 
    <s:textfield name="model.total"  label ="Grand Total"/>
    <s:textfield name="model.discount"  label ="discount"/>

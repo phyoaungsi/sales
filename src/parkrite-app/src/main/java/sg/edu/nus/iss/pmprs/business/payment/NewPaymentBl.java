@@ -16,7 +16,7 @@ import sg.edu.nus.iss.pmprs.core.vo.CommonVo;
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsInboxMessageRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsPaymentRepository;
-import sg.edu.nus.iss.pmprs.dao.PmprsCarParkRepository;
+import sg.edu.nus.iss.pmprs.dao.ProductRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsVehicleRepository;
 import sg.edu.nus.iss.pmprs.entity.Order;
@@ -34,7 +34,7 @@ import sg.edu.nus.iss.pmprs.vo.booking.PaymentVo;
 public class NewPaymentBl extends BusinessLogic<sg.edu.nus.iss.pmprs.mobile.booking.PaymentResponse> {
 
 	@Autowired PmprsPaymentRepository paymentRepository;
-	@Autowired PmprsCarParkRepository carparkRepository;
+	@Autowired ProductRepository carparkRepository;
 	@Autowired PmprsVehicleRepository memberVehicleRepository;
 	@Autowired PmprsInboxMessageRepository inboxRepository;
 	@Autowired InboxMessageBl inbox;
