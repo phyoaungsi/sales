@@ -13,8 +13,7 @@
 $( document ).ready(function() {
 	
 	var tableData = [
-    {id:1, name:"Billy Bob", qty:"12", price:"12", total:144},
-    {id:2, name:"Mary May", qty:"1", price:"10", total:10},
+   
 ]
     console.log( "ready!" );
 	$('#selectedProduct').tabulator({
@@ -27,7 +26,7 @@ $( document ).ready(function() {
        
         {title:"Unit Price", field:"price"},
         {title:"Quantity", field:"qty", editor:"input"},
-        {title:"Total Price", field:"total", align:"center"},
+        {title:"Total Price", field:"total", align:"center", bottomCalc:"sum"},
 		],
 		cellEdited:function(cell){
         //This callback is called any time a cell is edidted
@@ -56,6 +55,13 @@ $( document ).ready(function() {
 
 	
 	
+	$("#selectedProduct").tabulator({
+	    cellEdited:function(cell){
+	        //data - the updated table data
+	        alert(cell.val());
+	    },
+	});
+	
 
 	
 });
@@ -72,8 +78,7 @@ function removeRow(id)
 var counter=0;
 function saveChange()
 {
-	$('table#productSelection').empty();
-	$('table#productSelection').append("	<tr><th>Serial</th><th>Name</th><th>Price</th><th>Quantity</th><th>Option</th></tr>");
+
 	    counter=0;
 		$('table#stockList input[type=checkbox]').each(function() {
 	   if ($(this).is(":checked")) {
@@ -82,12 +87,14 @@ function saveChange()
 	       
 	       obj=JSON.parse(jsonstr);
 	       counter++;
-	       $('#productSelection').append('<tr id="stock'+counter+'"><td>'+counter+'</td><td>'+obj.name+'</td><td>'+obj.price+'</td><td><input type=text name=model.quantity.'+counter+' /></td><td onclick="removeRow(\'stock'+counter+'\')">Remove</td></tr>')
+	   //    $('#productSelection').append('<tr id="stock'+counter+'"><td>'+counter+'</td><td>'+obj.name+'</td><td>'+obj.price+'</td><td><input type=text name=model.quantity.'+counter+' /></td><td onclick="removeRow(\'stock'+counter+'\')">Remove</td></tr>')
+	   totalPrice=1*obj.price;   
+	   $('#selectedProduct').tabulator("addRow", {id:counter, name:obj.name, qty:"1", price:obj.price, total:totalPrice});
 	   }
 	});
 	
 	
-	  $('#selectedProduct').tabulator("addRow", {id:2, name:"Jonanthan", qty:"1", price:"23", total:12});
+	//  $('#selectedProduct').tabulator("addRow", {id:2, name:"Jonanthan", qty:"1", price:"23", total:12});
 }
 $( "#saveChange" ).click(function() {
 	
@@ -100,6 +107,11 @@ $( "#saveChange" ).click(function() {
 	});
 	});
 </script>
+  <script type="text/javascript">
+            $(function () {
+                $('#createOrder_model_deliverDate').datepicker();
+            });
+        </script>
 </head>
 <body>
 
@@ -118,25 +130,11 @@ $( "#saveChange" ).click(function() {
    <s:textfield name="model.total"  label ="Grand Total"/>
    <s:textfield name="model.discount"  label ="discount"/>
     <s:textfield name="model.deliverDate"  label ="Date of Delivery"/>
- <tr>
-    <td>
-    <s:property value='Date of Delivery'/>
-    </td><td>
- 
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+
            
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
+      
     
-</td></tr>
+
      <s:textfield name="model.orderStatus"  label ="Order Status"/>
      <s:textfield name="model.paymentStatus"  label ="Payment Status"/>
       <s:textfield name="model.paymentType"  label ="Payment Type"/>
@@ -153,32 +151,7 @@ $( "#saveChange" ).click(function() {
   </div>
   <div class="panel-body">
 <div  id="selectedProduct"> </div>
-<table  class="table" id="productSelection">
-<tr>
-<th>
-Serial
 
-</th>
-<th>
-Name
-
-</th>
-<th>
-Price
-
-</th>
-<th>
-Quantity
-
-</th>
-<th>
-Option
-
-</th>
-</tr>
-
-
-</table>
 
 </div>
 </div>
