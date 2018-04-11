@@ -13,6 +13,7 @@ import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsMember;
 import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
+import sg.edu.nus.iss.pmprs.web.common.StringUtil;
 import sg.edu.nus.iss.pmprs.web.form.OrderForm;
 
 import com.opensymphony.xwork2.interceptor.ScopedModelDriven;
@@ -57,6 +58,7 @@ ScopedModelDriven<OrderForm> {
 		{
 			selectUsers.put(member.getId().toString(), member.getName());
 		}
+		form.setInvRef(StringUtil.getInvRef());
 		form.setSelectUsers(selectUsers);
 	    this.getModel().setStocks(products);
 	    return SUCCESS;

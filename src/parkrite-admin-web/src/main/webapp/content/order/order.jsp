@@ -28,9 +28,14 @@ $( document ).ready(function() {
         {title:"Quantity", field:"qty", editor:"input"},
         {title:"Total Price", field:"total", align:"center", bottomCalc:"sum"},
 		],
+
+		
 		cellEdited:function(cell){
-        //This callback is called any time a cell is edidted
-		},
+	        //data - the updated table data
+			  alert(cell.getValue());
+	          cell.getRow().getData().total=90;
+	    },
+	    
 		rowAdded:function(row){
 	        //row - row component
 	        console.log(row.getData());
@@ -49,6 +54,11 @@ $( document ).ready(function() {
 			        }
 			    }
 			});
+			var tmp=row.getData();
+			
+			var results = $("#selectedProduct").tabulator("getCalcResults");
+			var total=results.bottom.total+tmp.total;
+			$("#createOrder_model_total").val(results.bottom.total+tmp.total);
 	    },
 	});
 
@@ -58,7 +68,7 @@ $( document ).ready(function() {
 	$("#selectedProduct").tabulator({
 	    cellEdited:function(cell){
 	        //data - the updated table data
-	        alert(cell.val());
+	        alert("hello");
 	    },
 	});
 	
