@@ -32,8 +32,14 @@ $( document ).ready(function() {
 		
 		cellEdited:function(cell){
 	        //data - the updated table data
-			  alert(cell.getValue());
-	          cell.getRow().getData().total=90;
+			 // alert(cell.getValue());
+	         var row= cell.getRow();
+	        var price= row.getData().price;
+	        var quantity=cell.getValue();
+	        var total_=price*quantity;
+             row.update({"total": total_});
+	          $("#selectedProduct").tabulator("setData");
+	          $("#selectedProduct").tabulator("setSort", "id", "asc");
 	    },
 	    
 		rowAdded:function(row){
