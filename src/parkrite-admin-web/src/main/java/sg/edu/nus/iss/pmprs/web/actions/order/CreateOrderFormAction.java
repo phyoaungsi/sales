@@ -12,8 +12,11 @@ import sg.edu.nus.iss.pmprs.dao.StockRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
 import sg.edu.nus.iss.pmprs.entity.PmprsMember;
 import sg.edu.nus.iss.pmprs.entity.Product;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
+import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
-import sg.edu.nus.iss.pmprs.web.common.StringUtil;
+
 import sg.edu.nus.iss.pmprs.web.form.OrderForm;
 
 import com.opensymphony.xwork2.interceptor.ScopedModelDriven;
@@ -58,9 +61,40 @@ ScopedModelDriven<OrderForm> {
 		{
 			selectUsers.put(member.getId().toString(), member.getName());
 		}
+		
+			
+		form.setOrderStatusList(getOrderStatusMap());
+		form.setOrderStatus(OrderStatus.NEW.name());
+		form.setPaymentStatusList(getPaymentStatusMap());
+		form.setPaymentStatus(PaymentStatus.NEW.name());
+		form.setPaymentTypeList(getPaymentTypeMap());
 		form.setInvRef(StringUtil.getInvRef());
 		form.setSelectUsers(selectUsers);
 	    this.getModel().setStocks(products);
 	    return SUCCESS;
+	}
+
+	private Map<String,String> getOrderStatusMap() {
+		Map<String, String> orderStatusList=new HashMap<String,String>();
+		for(OrderStatus s:OrderStatus.values()) {
+			orderStatusList.put(s.name(),s.getDesc());
+		};
+		return orderStatusList;
+	}
+	
+	private  Map<String,String>  getPaymentStatusMap() {
+		Map<String, String> list=new HashMap<String,String>();
+		for(PaymentStatus s:PaymentStatus.values()) {
+			list.put(s.name(),s.getDesc());
+		};
+		return list;
+	}
+	
+	private  Map<String,String>  getPaymentTypeMap() {
+		Map<String, String> list=new HashMap<String,String>();
+		for(PaymentType s:PaymentType.values()) {
+			list.put(s.name(),s.getDesc());
+		};
+		return list;
 	}
 }

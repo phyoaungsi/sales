@@ -40,6 +40,7 @@ $( document ).ready(function() {
              row.update({"total": total_});
 	          $("#selectedProduct").tabulator("setData");
 	          $("#selectedProduct").tabulator("setSort", "id", "asc");
+	      	$("#createOrder_model_total").val(results.bottom.total+tmp.total);
 	    },
 	    
 		rowAdded:function(row){
@@ -139,23 +140,15 @@ $( "#saveChange" ).click(function() {
 		name="model.selectedUser" />
  <s:hidden name="model.id" />
    <s:textfield  name="model.invRef" label="Invoice No" />
-  
    <s:textfield name="model.buyer" label="Name" />
-  
    <s:textfield name="model.address"  label ="address"/> 
    <s:textfield name="model.total"  label ="Grand Total"/>
    <s:textfield name="model.discount"  label ="discount"/>
-    <s:textfield name="model.deliverDate"  label ="Date of Delivery"/>
-
-           
-      
-    
-
-     <s:textfield name="model.orderStatus"  label ="Order Status"/>
-     <s:textfield name="model.paymentStatus"  label ="Payment Status"/>
-      <s:textfield name="model.paymentType"  label ="Payment Type"/>
-       
-    <s:textfield name="model.remarks"  label ="Remarks"/>
+   <s:textfield name="model.deliverDate"  label ="Date of Delivery"/>
+   <s:select cssClass="form-control" label="Order Status" list="orderStatusList" name="model.orderStatus" />
+   <s:select cssClass="form-control" label="Payment Status" list="paymentStatusList" name="model.paymentStatus" />
+   <s:select cssClass="form-control" label="Payment Type" list="paymentTypeList" name="model.paymentType" />
+   <s:textfield name="model.remarks"  label ="Remarks"/>
 <tr><td >
 </td></tr>
   <s:submit/>
@@ -192,7 +185,7 @@ $( "#saveChange" ).click(function() {
 <s:iterator value="stocks" id="stock" status="comboMealsStatus">
   <tr>
   
-      <td><s:property value="#stock.name"/> (This is first value) </td> <td><s:property value="#stock.price"/> (This is first value) </td><td><input type="checkbox" name="buying" value='{"name":"<s:property value="#stock.name"/>" ,"price":"<s:property value="#stock.price"/>"}'> </td>
+      <td><s:property value="#stock.name"/></td> <td><s:property value="#stock.price"/></td><td><input type="checkbox" name="buying" value='{"name":"<s:property value="#stock.name"/>" ,"price":"<s:property value="#stock.price"/>"}'> </td>
 
   </tr>
 </s:iterator>
@@ -200,7 +193,7 @@ $( "#saveChange" ).click(function() {
  </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="saveChange" onClick="saveChange()" class="btn btn-primary">Save changes</button>
+        <button type="button" id="saveChange" data-dismiss="modal" onClick="saveChange()" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
