@@ -67,6 +67,7 @@
                 <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parkrite_test"/>
             <property name="javax.persistence.jdbc.user" value="parkrite"/>
             <property name="javax.persistence.jdbc.password" value="computer"/>
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
             <!--
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://ram3500.mochahost.com:3306/phyoau82_parkrite?autoReconnect=true&amp;relaxAutoCommit=true"/>
             <property name="javax.persistence.jdbc.user" value="phyoau82_mtech"/>

@@ -16,7 +16,8 @@ import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
-
+import sg.edu.nus.iss.pmprs.web.common.SessionKeys;
+import sg.edu.nus.iss.pmprs.web.common.StringUtil;
 import sg.edu.nus.iss.pmprs.web.form.OrderForm;
 
 import com.opensymphony.xwork2.interceptor.ScopedModelDriven;
@@ -53,7 +54,7 @@ ScopedModelDriven<OrderForm> {
 	PmprsMemberRepository memberRepository;;
 	
 	public String execute() {
-	
+		clearSession(SessionKeys.STOCK_LIST.name());
 		List<Product> products=carparkRepository.findAll();
 		List<PmprsMember> memberList=memberRepository.findAll();
 		Map<String, String> selectUsers=new HashMap<String,String>();

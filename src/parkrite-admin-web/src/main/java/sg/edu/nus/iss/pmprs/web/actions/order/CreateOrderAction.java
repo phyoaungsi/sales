@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.pmprs.web.actions.order;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import sg.edu.nus.iss.pmprs.dao.PmprsBookingRepository;
 import sg.edu.nus.iss.pmprs.dao.PmprsMemberRepository;
@@ -20,6 +22,8 @@ import sg.edu.nus.iss.pmprs.entity.Product;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.OrderStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentStatus;
 import sg.edu.nus.iss.pmprs.entity.PaymentStatus.PaymentType;
+import sg.edu.nus.iss.pmprs.service.SaleService;
+import sg.edu.nus.iss.pmprs.vo.order.OrderVo;
 import sg.edu.nus.iss.pmprs.web.actions.CommonAction;
 import sg.edu.nus.iss.pmprs.web.ajax.order.SelectedStock;
 import sg.edu.nus.iss.pmprs.web.common.SessionKeys;
@@ -58,17 +62,22 @@ public class CreateOrderAction  extends CommonAction implements ScopedModelDrive
   	PmprsMemberRepository memberRepo;
     @Autowired
 	StockRepository stockRepo;
+    
+    @Autowired
+	@Qualifier("saleService")
+    SaleService saleService;
+    
 	public String execute() {
 		
-		List <SelectedStock> list =(List <SelectedStock> )getSession().get( SessionKeys.STOCK_LIST.name());
+		Map <String,SelectedStock> list =(Map <String,SelectedStock> )getSession().get( SessionKeys.STOCK_LIST.name());
 		
-		Order order=new Order();
+		OrderVo order=new OrderVo();
 		order.setDeliveryDate(ConvertUtils.getDate(model.getDeliverDate()));
 		order.setDiscount(ConvertUtils.getAmount(model.getDiscount(),this,"discount").doubleValue());
 		//order.setId(model.get);
-		PmprsMember member=memberRepo.getOne(model.getSelectedUser());
-		order.setInvRef("");
-		order.setMember(member);
+		order.setInvRef(model.getInvRef());
+		
+		order.setMemberId(model.getSelectedUser());
 		order.setOrderStatus(OrderStatus.valueOf(model.getOrderStatus()));
 		order.setOrderSubmitDatetime(new Date());
 		order.setPaymentDate(null);
@@ -76,19 +85,19 @@ public class CreateOrderAction  extends CommonAction implements ScopedModelDrive
 		order.setPaymentType(PaymentType.valueOf(model.getPaymentType()));
 		order.setTotal(ConvertUtils.getAmount(model.getTotal(),this,"total").doubleValue());
 		
-		List<OrderStock> items=new ArrayList<>();
-		for(SelectedStock s:list){
-			OrderStock os=new OrderStock();
-		    Product stock=	stockRepo.getOne(Integer.parseInt(s.getId()));
-			os.setProduct(stock);
-			items.add(os);
-			
+		List<OrderVo.SelectedStock> items=new ArrayList<>();
+		for(SelectedStock s:list.values()){
+			OrderVo.SelectedStock os=order.new SelectedStock();
+			os.setId(s.getId());
+			os.setQty(s.getQty());
+			items.add(os);		
 		}
 		order.setItems(items);
-		orderRepo.save(order);
+		saleService.createNewOrder(order);
 		gson=new Gson();
 		this.addActionMessage(getText("create.order.success"));
-	    this.getModel().setJsonString(gson.toJson(list));
+	
+	    this.getModel().setJsonString(gson.toJson(list.values()));
 	return SUCCESS;
 	}
 

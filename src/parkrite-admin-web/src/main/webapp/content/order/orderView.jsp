@@ -11,7 +11,7 @@
 <script>
 
 $( document ).ready(function() {
-	var tableData=<s:property  escapeHtml="false" value="jsonString"   /> ;
+	var tableData=<s:property  escapeHtml="false" value="jsonString" /> ;
 	
     console.log( "ready!" );
 	$('#selectedProduct').tabulator({
@@ -23,31 +23,9 @@ $( document ).ready(function() {
         {title:"Stock Name", field:"name", sorter:"number"},
        
         {title:"Unit Price", field:"price"},
-        {title:"Quantity", field:"qty", editor:"input"},
+        {title:"Quantity", field:"qty"},
         {title:"Total Price", field:"total", align:"center"},
 		],
-		cellEdited:function(cell){
-        //This callback is called any time a cell is edidted
-		},
-		rowAdded:function(row){
-	        //row - row component
-	        console.log(row.getData());
-	        
-			$.ajax({
-			    url: "<s:url namespace='/ajax' action='editStockAction' />",
-			    data: '{"data":['+JSON.stringify(row.getData())+']}',
-			    dataType: 'json',
-			    contentType: 'application/json',
-			    type: 'POST',
-			    async: true,
-			    success: function (res) {
-			        console.log(res.data.length);
-			        for (var i = 0; i < res.data.length; i++) {
-			            console.log(" " + res.data[i].name + "-" + res.data[i].id + "-" + res.data[i].active + "-    " + res.data[i].date);
-			        }
-			    }
-			});
-	    },
 	});
 
 
@@ -67,35 +45,7 @@ function removeRow(id)
 	
 }
 var counter=0;
-function saveChange()
-{
-	$('table#productSelection').empty();
-	$('table#productSelection').append("	<tr><th>Serial</th><th>Name</th><th>Price</th><th>Quantity</th><th>Option</th></tr>");
-	    counter=0;
-		$('table#stockList input[type=checkbox]').each(function() {
-	   if ($(this).is(":checked")) {
-	       selected.push($(this).attr('value'));
-	       var jsonstr=$(this).attr('value');
-	       
-	       obj=JSON.parse(jsonstr);
-	       counter++;
-	       $('#productSelection').append('<tr id="stock'+counter+'"><td>'+counter+'</td><td>'+obj.name+'</td><td>'+obj.price+'</td><td><input type=text name=model.quantity.'+counter+' /></td><td onclick="removeRow(\'stock'+counter+'\')">Remove</td></tr>')
-	   }
-	});
-	
-	
-	  $('#selectedProduct').tabulator("addRow", {id:2, name:"Jonanthan", qty:"1", price:"23", total:12});
-}
-$( "#saveChange" ).click(function() {
-	
-	$('table#stockList input[type=checkbox]').each(function() {
-	   if ($(this).is(":checked")) {
-	       selected.push($(this).attr('value'));
-	       var json=$(this).attr('value');
-	       alert(json);
-	   }
-	});
-	});
+
 </script>
 </head>
 <body>
@@ -131,68 +81,14 @@ $( "#saveChange" ).click(function() {
   </div>
   <div class="panel-body">
 <div id="selectedProduct"> </div>
-<table  class="table" id="productSelection">
-<tr>
-<th>
-Serial
 
-</th>
-<th>
-Name
-
-</th>
-<th>
-Price
-
-</th>
-<th>
-Quantity
-
-</th>
-<th>
-Option
-
-</th>
-</tr>
-
-
-</table>
 
 </div>
 </div>
 <script>
 
 </script>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-<table class="table" id="stockList">
-<s:iterator value="stocks" id="stock" status="comboMealsStatus">
-  <tr>
-  
-      <td><s:property value="#stock.name"/> (This is first value) </td> <td><s:property value="#stock.price"/> (This is first value) </td><td><input type="checkbox" name="buying" value='{"name":"<s:property value="#stock.name"/>" ,"price":"<s:property value="#stock.price"/>"}'> </td>
 
-  </tr>
-</s:iterator>
-</table>
- </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="saveChange" onClick="saveChange()" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 </body>
 </html>

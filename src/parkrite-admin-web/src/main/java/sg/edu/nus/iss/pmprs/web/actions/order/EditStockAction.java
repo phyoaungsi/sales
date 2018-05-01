@@ -30,17 +30,42 @@ public class EditStockAction extends CommonAction  implements ModelDriven<Common
 		{
 			session=new HashMap<String,Object>();
 		}
-		List <SelectedStock> list =(List <SelectedStock> )session.get( SessionKeys.STOCK_LIST.name());
+		Map <String,SelectedStock> list =(Map <String,SelectedStock> )session.get( SessionKeys.STOCK_LIST.name());
 	   
 		if(data==null) return SUCCESS;
 		if(list!=null && list.size()>0)
 		{
-			list.addAll(data);
+			for(SelectedStock s:data){
+				if(list.containsKey(s.getId())){
+					SelectedStock stk=list.get(s.getId());
+					int qty=stk.getQty()+1;
+				     stk.setQty(qty);
+					
+				}
+				else
+				{
+					list.put(s.getId(), s);
+				}
+			}
+			
 			session.put(SessionKeys.STOCK_LIST.name(), list);
 		}
 		else
 		{
-			session.put(SessionKeys.STOCK_LIST.name(), data);
+			 list =new HashMap<String,SelectedStock> ();
+			for(SelectedStock s:data){
+				if(list.containsKey(s.getId())){
+					SelectedStock stk=list.get(s.getId());
+					int qty=stk.getQty()+1;
+				     stk.setQty(qty);
+					
+				}
+				else
+				{
+					list.put(s.getId(), s);
+				}
+			}
+			session.put(SessionKeys.STOCK_LIST.name(), list);
 		}
 	    setSession(session);
 		this.response=new CommonAjaxResponse();

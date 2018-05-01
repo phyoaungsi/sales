@@ -1,7 +1,13 @@
 package sg.edu.nus.iss.pmprs.web.ajax.order;
 
-public class SelectedStock {
+import java.io.Serializable;
 
+public class SelectedStock implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7264694043865897098L;
 	private String id;
 	private String name;
 	private double price;

@@ -39,6 +39,8 @@
      <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
  
     <bean id="carparkService" class="sg.edu.nus.iss.pmprs.service.CarparkService" />
+   
+    
     <bean id="carparkServiceImpl" class="sg.edu.nus.iss.pmprs.service.CarparkService" /><!--hotfix-->
      <bean id="carparkservice" class="sg.edu.nus.iss.pmprs.service.CarparkService" />
      <bean id="carparkownerServiceImpl" class="sg.edu.nus.iss.pmprs.service.CarParkOwnerServiceImpl" />
@@ -48,6 +50,11 @@
     <bean id="bookingService" class="sg.edu.nus.iss.pmprs.service.BookingService" />
     <bean id="userAuthenticationService" class="sg.edu.nus.iss.pmprs.service.UserAuthenticationServiceImpl" />
   
+  
+  
+    <bean id="saleService" class="sg.edu.nus.iss.pmprs.service.SaleService" />
+    
+    
     <bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
