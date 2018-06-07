@@ -61,7 +61,13 @@ public class CreateCarParkBl extends BusinessLogic<ProductVo> {
 		p.setWebLink(carpark.getWeblink());
 		p.setDeliveryDate(carpark.getDeliveryDate());
 		p.setArrivalDate(carpark.getArrivalDate());
-	
+	    p.setSellPriceLocal(carpark.getSellPriceLocal());
+	    p.setSellPrice(carpark.getSellPrice());
+		p.setDeliveryPrice(carpark.getDeliveryPrice());
+		p.setDeliveryPriceLocal(carpark.getDeliveryPriceLocal()); 
+		p.setColor(carpark.getColor());
+		p.setSize(carpark.getSize()); 
+		p.setWeight(carpark.getWeight());
 		carparkRepository.save(p);	
 	
 	}

@@ -17,17 +17,23 @@ public class ProductForm extends CommonForm {
 	 */
 	private static final long serialVersionUID = 7377976628494356953L;
 	//public Map<String,String> carparkOwners;
-	public Integer id;
-	public  String name;
-	public  String remarks;
-	public double price;
-	public double priceLocal;
-	public Integer quantity;
-	public boolean inStock;
-	public String productId;
-	public String description;
-	public String weblink;
-	public String fblink;
+	private Integer id;
+	private  String name;
+	private  String remarks;
+	private double price;
+	private double priceLocal;
+	private Integer quantity;
+	private double sellPriceLocal;
+	private double sellPrice;
+	private double deliveryPrice;
+	private double deliveryPriceLocal;
+	private String color;
+	private String size;
+	private String weight;
+	private String productId;
+	private String description;
+	private String weblink;
+	private String fblink;
 	
 	@Override
 	public void convertFormToDao(CommonForm f) {
@@ -81,15 +87,13 @@ public class ProductForm extends CommonForm {
 		this.id = id;
 	}
 	public ProductVo modelToVo() {
-		ProductForm model=this;
-		ProductVo vo = new ProductVo();
-		
-		vo.setId(model.getId());
-		
-		vo.setName(model.getName());
-		
-
-		vo.setRemarks(model.getRemarks());
+	
+		ProductVo vo = new ProductVo(getName(), getRemarks(), getPrice(),
+				getPriceLocal(), getQuantity(), true,
+				getProductId(), getDescription(), getWeblink(),
+				getFblink(), getSellPriceLocal(), getSellPrice(),
+				getDeliveryPrice(), getDeliveryPriceLocal(), getColor(),
+				getSize(), getWeight());
 	
 		return vo;
 	}
@@ -133,6 +137,90 @@ public class ProductForm extends CommonForm {
 	
 	
 	
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public double getPriceLocal() {
+		return priceLocal;
+	}
+	public void setPriceLocal(double priceLocal) {
+		this.priceLocal = priceLocal;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	public double getSellPriceLocal() {
+		return sellPriceLocal;
+	}
+	public void setSellPriceLocal(double sellPriceLocal) {
+		this.sellPriceLocal = sellPriceLocal;
+	}
+	public double getSellPrice() {
+		return sellPrice;
+	}
+	public void setSellPrice(double sellPrice) {
+		this.sellPrice = sellPrice;
+	}
+	public double getDeliveryPrice() {
+		return deliveryPrice;
+	}
+	public void setDeliveryPrice(double deliveryPrice) {
+		this.deliveryPrice = deliveryPrice;
+	}
+	public double getDeliveryPriceLocal() {
+		return deliveryPriceLocal;
+	}
+	public void setDeliveryPriceLocal(double deliveryPriceLocal) {
+		this.deliveryPriceLocal = deliveryPriceLocal;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public String getWeight() {
+		return weight;
+	}
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getWeblink() {
+		return weblink;
+	}
+	public void setWeblink(String weblink) {
+		this.weblink = weblink;
+	}
+	public String getFblink() {
+		return fblink;
+	}
+	public void setFblink(String fblink) {
+		this.fblink = fblink;
 	}
 
 }

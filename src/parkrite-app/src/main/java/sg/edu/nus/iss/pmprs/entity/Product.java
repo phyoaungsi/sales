@@ -91,6 +91,36 @@ public class Product extends CommonEntity   implements Serializable
     
     @Column(name="exchangeRate")
   	private double exchangeRate;
+
+
+    @Column(name="deliveryPriceLocal")
+	private double deliveryPriceLocal;
+
+
+    @Column(name="color")
+	private String color;
+
+
+    @Column(name="weight")
+	private String weight;
+
+
+    @Column(name="size")
+	private String size;
+
+
+    @Column(name="sellPriceLocal")
+	private double sellPriceLocal;
+
+
+    @Column(name="sellPrice")
+	private double sellPrice;
+
+
+    @Column(name="deliveryPrice")
+	private double deliveryPrice;
+    
+    
 	public Date getArrivalDate() {
 		return arrivalDate;
 	}
@@ -313,6 +343,69 @@ public Boolean getInStock() {
 
 public void setInStock(Boolean inStock) {
 	this.inStock = inStock;
+}
+
+
+
+
+
+public void setSellPriceLocal(double sellPriceLocal) {
+	// TODO Auto-generated method stub
+	this.sellPriceLocal=sellPriceLocal;
+}
+
+
+
+
+
+public void setSellPrice(double sellPrice) {
+	// TODO Auto-generated method stub
+	this.sellPrice=sellPrice;
+}
+
+
+
+
+
+public void setDeliveryPriceLocal(double deliveryPriceLocal) {
+	this.deliveryPriceLocal=deliveryPriceLocal;
+	
+}
+
+
+
+
+
+public void setDeliveryPrice(double deliveryPrice) {
+	this.deliveryPrice=deliveryPrice;
+	
+}
+
+
+
+
+
+public void setColor(String color) {
+	this.color=color;
+	
+}
+
+
+
+
+
+public void setSize(String size) {
+	this.size=size;
+	
+}
+
+
+
+
+
+public void setWeight(String weight) {
+	// TODO Auto-generated method stub
+	this.weight=weight;
 }
 
 
